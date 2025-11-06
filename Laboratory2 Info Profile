@@ -1,0 +1,114 @@
+import React from 'react';
+import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+
+export default function App() {
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.card}>
+        {/* 👤 Profile Picture */}
+
+        <Text style={styles.title}>My Student Profile</Text>
+
+        <View style={styles.section}>
+          <Text style={styles.label}>Name:</Text>
+          <Text style={styles.text}>Resley Evan T. Intia</Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.label}>Age:</Text>
+          <Text style={styles.text}>21</Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.label}>Course/Year/Section:</Text>
+          <Text style={styles.text}>BSCS 3-4</Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.label}>About Me:</Text>
+          <Text style={styles.text}>
+            Hello! About me is boring 😅 I love online games like CODM and ML.
+          </Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.label}>Achievements:</Text>
+          <Text style={styles.text}>
+            • Finished my first React Native app activity.{"\n"}
+            • Senior High School with Honors.
+          </Text>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.label}>Skills:</Text>
+          <Text style={styles.text}>
+            • Active{"\n"}
+            • Strong{"\n"}
+            • Creative
+          </Text>
+        </View>
+
+        <Text style={styles.footer}>
+          Created by Resley Evan T. Intia | DCIT 26
+        </Text>
+      </View>
+    </ScrollView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+    backgroundColor: '#74b9ff', // 💙 Light blue background
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 40,
+  },
+  card: {
+    backgroundColor: '#ffffff',
+    borderRadius: 25,
+    padding: 25,
+    width: '90%',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 6,
+  },
+  profileImage: {
+    width: 110,
+    height: 110,
+    borderRadius: 55,
+    marginBottom: 15,
+    borderWidth: 3,
+    borderColor: '#0984e3',
+  },
+  title: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#0984e3',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  section: {
+    width: '100%',
+    marginBottom: 12,
+  },
+  label: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#0984e3', // Blue accent color
+  },
+  text: {
+    fontSize: 16,
+    color: '#2d3436',
+    marginTop: 3,
+  },
+  footer: {
+    marginTop: 25,
+    fontSize: 12,
+    color: '#636e72',
+    textAlign: 'center',
+  },
+});
