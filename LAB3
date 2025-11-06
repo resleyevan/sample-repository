@@ -1,0 +1,123 @@
+import React, { useState } from 'react';
+import { 
+  View, Text, TextInput, TouchableOpacity, StyleSheet, FlatList 
+} from 'react-native';
+
+export default function App() {
+  const [enteredItem, setEnteredItem] = useState('');
+  const [itemList, setItemList] = useState([]);
+
+  const addItemHandler = () => {
+    if (enteredItem.trim() !== '') {
+      setItemList([...itemList, { id: Math.random().toString(), value: enteredItem }]);
+      setEnteredItem('');
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.header}> My list </Text>
+
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.inputBox}
+          placeholder="Type something..."
+          placeholderTextColor="#B5BECF"
+          value={enteredItem}
+          onChangeText={setEnteredItem}
+        />
+
+        <TouchableOpacity style={styles.addButton} onPress={addItemHandler}>
+          <Text style={styles.addButtonText}>＋</Text>
+        </TouchableOpacity>
+      </View>
+
+      <FlatList
+        data={itemList}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.listItem}>
+            <Text style={styles.listText}>🌼 {item.value}</Text>
+          </View>
+        )}
+      />
+
+      <Text style={styles.footer}>✨ Designed by: Resley Evan T. Intia ✨</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#F9F7F7',
+    padding: 25,
+    paddingTop: 60,
+  },
+  header: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#3F72AF',
+    textAlign: 'center',
+    marginBottom: 25,
+    letterSpacing: 1,
+    fontFamily: 'sans-serif-medium',
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  inputBox: {
+    flex: 1,
+    backgroundColor: '#DBE2EF',
+    padding: 12,
+    borderRadius: 15,
+    fontSize: 16,
+    color: '#112D4E',
+    borderWidth: 1,
+    borderColor: '#BCCCDC',
+    fontFamily: 'sans-serif',
+  },
+  addButton: {
+    marginLeft: 10,
+    backgroundColor: '#3F72AF',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#3F72AF',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+  },
+  addButtonText: {
+    color: '#F9F7F7',
+    fontWeight: 'bold',
+    fontSize: 22,
+  },
+  listItem: {
+    backgroundColor: '#FFFFFF',
+    padding: 15,
+    borderRadius: 15,
+    marginVertical: 8,
+    borderLeftWidth: 6,
+    borderLeftColor: '#3F72AF',
+    shadowColor: '#000',
+    shadowOpacity: 0.15,
+    shadowRadius: 6,
+    elevation: 3,
+  },
+  listText: {
+    color: '#112D4E',
+    fontSize: 18,
+    fontFamily: 'sans-serif',
+  },
+  footer: {
+    textAlign: 'center',
+    color: '#3F72AF',
+    marginTop: 25,
+    fontSize: 13,
+    fontFamily: 'sans-serif-light',
+  },
+});
